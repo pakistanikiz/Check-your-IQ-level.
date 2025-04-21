@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IQ Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    .question p {
+      font-weight: bold;
+    }
+    button {
+      background: #3498db;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    #result {
+      margin-top: 30px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Intelligence Quiz</h1>
+  <form id="quizForm">
+    <div class="question">
+      <p>1. What is 5 + 7?</p>
+      <input type="radio" name="q1" value="false"> 10<br>
+      <input type="radio" name="q1" value="true"> 12<br>
+      <input type="radio" name="q1" value="false"> 13
+    </div>
+    <div class="question">
+      <p>2. Which one is a prime number?</p>
+      <input type="radio" name="q2" value="false"> 4<br>
+      <input type="radio" name="q2" value="true"> 5<br>
+      <input type="radio" name="q2" value="false"> 6
+    </div>
+    <div class="question">
+      <p>3. Capital of France?</p>
+      <input type="radio" name="q3" value="true"> Paris<br>
+      <input type="radio" name="q3" value="false"> London<br>
+      <input type="radio" name="q3" value="false"> Rome
+    </div>
+    <div class="question">
+      <p>4. Which is the largest planet?</p>
+      <input type="radio" name="q4" value="true"> Jupiter<br>
+      <input type="radio" name="q4" value="false"> Earth<br>
+      <input type="radio" name="q4" value="false"> Mars
+    </div>
+    <div class="question">
+      <p>5. What is the boiling point of water?</p>
+      <input type="radio" name="q5" value="false"> 80°C<br>
+      <input type="radio" name="q5" value="true"> 100°C<br>
+      <input type="radio" name="q5" value="false"> 90°C
+    </div>
+    <div class="question">
+      <p>6. How many continents are there?</p>
+      <input type="radio" name="q6" value="true"> 7<br>
+      <input type="radio" name="q6" value="false"> 6<br>
+      <input type="radio" name="q6" value="false"> 5
+    </div>
+    <div class="question">
+      <p>7. Which metal is liquid at room temp?</p>
+      <input type="radio" name="q7" value="false"> Iron<br>
+      <input type="radio" name="q7" value="true"> Mercury<br>
+      <input type="radio" name="q7" value="false"> Copper
+    </div>
+    <div class="question">
+      <p>8. What does "CPU" stand for?</p>
+      <input type="radio" name="q8" value="true"> Central Processing Unit<br>
+      <input type="radio" name="q8" value="false"> Computer Power Unit<br>
+      <input type="radio" name="q8" value="false"> Central Power Unit
+    </div>
+    <div class="question">
+      <p>9. Which animal is known as the king of the jungle?</p>
+      <input type="radio" name="q9" value="true"> Lion<br>
+      <input type="radio" name="q9" value="false"> Tiger<br>
+      <input type="radio" name="q9" value="false"> Elephant
+    </div>
+    <div class="question">
+      <p>10. What shape has 3 sides?</p>
+      <input type="radio" name="q10" value="false"> Square<br>
+      <input type="radio" name="q10" value="false"> Circle<br>
+      <input type="radio" name="q10" value="true"> Triangle
+    </div>
+
+    <button type="button" onclick="calculateResult()">Submit Quiz</button>
+  </form>
+
+  <div id="result"></div>
+</div>
+
+<script>
+  function calculateResult() {
+    let correct = 0;
+    const form = document.getElementById('quizForm');
+    const totalQuestions = 10;
+
+    for (let i = 1; i <= totalQuestions; i++) {
+      const answer = form[`q${i}`].value;
+      if (answer === "true") {
+        correct++;
+      }
+    }
+
+    const percentage = Math.round((correct / totalQuestions) * 100);
+    document.getElementById('result').innerText = `You scored ${percentage}% Intelligence!`;
+  }
+</script>
+
+</body>
+</html>
